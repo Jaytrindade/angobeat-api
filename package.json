@@ -1,18 +1,25 @@
 {
-  "name": "angobeat",
+  "name": "angobeat-api",
   "version": "1.0.0",
   "description": "angobeat api principal",
   "main": "./src/server/index.js",
   "repository": "https://github.com/marinelaferro/angobeat-api.git",
   "author": "Marinela Ferro <marinela118@hotmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "node ./src/server/index.js",
+    "dev": "nodemon ./src/server/index.js",
+    "production": "nodemon ./src/server/index.js"
+  },
   "devDependencies": {
+    "dotenv": "^8.2.0",
     "eslint": "^6.8.0",
     "eslint-config-standard": "^14.1.1",
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-node": "^11.0.0",
     "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.1"
+    "eslint-plugin-standard": "^4.0.1",
+    "morgan": "^1.10.0"
   },
   "dependencies": {
     "express": "^4.17.1",
