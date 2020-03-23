@@ -3,6 +3,7 @@ const morgan = require('morgan')
 const CORS = require('@configs/cors')
 const auth = require('./auth')
 const { setRouter } = require('@utils')
+const { Message } = require('@messages')
 
 const routes = app => {
   // mostrar o status das routas
@@ -26,7 +27,7 @@ const routes = app => {
   })
 
   // pega o erro gerado e notifica
-  app.use((error, req, res, next) => res.status(error.status).json(error))
+  app.use((error, req, res, next) => Message.send(error, req, res))
 }
 
 module.exports = routes

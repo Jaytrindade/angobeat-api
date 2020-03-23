@@ -1,7 +1,8 @@
 const router = require('express').Router()
+const { Message, Success } = require('@messages')
 
 router.post('/', (req, res, next) => {
-  res.status(200).json({ message: 'passou nas routas' })
+  Message.send(Success({ message: 'passou nas routas' }), req, res)
 })
 
 module.exports = router

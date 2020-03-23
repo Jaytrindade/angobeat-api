@@ -7,5 +7,7 @@ module.exports = {
   ip,
   apiPrefix,
   baseUrl,
-  apiUrl: `/${apiPrefix}`
+  apiUrl: `/${apiPrefix}`,
+  apiCopyright:
+    'AngoBeat-API <marinela118@hotmail.com> - Todos os direitos reservados'
 }
