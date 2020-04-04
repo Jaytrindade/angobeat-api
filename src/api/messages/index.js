@@ -13,7 +13,7 @@ module.exports = {
 
       const message = {
         success: false,
-        request: req.headers.request,
+        service: req.headers.service,
         url: `${baseUrl}${req.originalUrl}`,
         hasNewToken: hasNewToken,
         token: newToken,

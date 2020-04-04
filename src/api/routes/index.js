@@ -4,6 +4,7 @@ const CORS = require('@configs/cors')
 const auth = require('./auth')
 const { setRouter } = require('@utils')
 const { Message } = require('@messages')
+const RequestFilters = require('@middlewares/request')
 
 const routes = app => {
   // mostrar o status das routas
@@ -17,7 +18,7 @@ const routes = app => {
   app.use(express.json())
 
   // auth routes
-  app.use(setRouter('auth'), auth)
+  app.use(setRouter('auth'), RequestFilters, auth)
 
   // se a rota não existir gera um erro
   app.use((req, res, next) => {

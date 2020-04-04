@@ -26,6 +26,7 @@
     "jsoft-agile": "^2.4.3",
     "jsonwebtoken": "^8.5.1",
     "module-alias": "^2.2.2",
-    "mongoose": "^5.9.5"
+    "mongoose": "^5.9.5",
+    "mongoose-timezone": "^1.3.0"
   }
 }

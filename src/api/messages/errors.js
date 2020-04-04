@@ -186,32 +186,46 @@ module.exports = {
       }
     }
   },
-  required: (type, field = false) => {
+  required: function(type, field = false) {
     if (field) return { JsError: this.errors.required[type](field) }
     else return { JsError: this.errors.required[type] }
   },
-  notFound: (type, field = false) => {
+  notFound: function(type, field = false) {
     if (field) return { JsError: this.errors.notFound[type](field) }
     else return { JsError: this.errors.notFound[type] }
   },
-  invalidStatic: type => ({ JsError: this.errors.invalid[type] }),
-  invalid: type => ({
-    JsError: {
-      code: `js-${type}-1`,
-      field: type,
-      hasExample: Object.keys(examples).includes(type),
-      example: examples[type] || '',
-      message: {
-        pt: `<${fieldsName[type].pt}> inválido.`,
-        en: `Invalid <${fieldsName[type].en}>.`
+  invalidStatic: function(type) {
+    return { JsError: this.errors.invalid[type] }
+  },
+  invalid: function(type) {
+    return {
+      JsError: {
+        code: `js-${type}-1`,
+        field: type,
+        hasExample: Object.keys(examples).includes(type),
+        example: examples[type] || '',
+        message: {
+          pt: `<${fieldsName[type].pt}> inválido.`,
+          en: `Invalid <${fieldsName[type].en}>.`
+        }
       }
     }
-  }),
-  unknown: () => ({ JsError: this.errors.unknown }),
-  uploadStatic: type => ({ JsError: this.errors.upload[type] }),
-  fileStatic: type => ({ JsError: this.errors.files[type] }),
-  request: type => ({ JsError: this.errors.request[type] }),
-  existStatic: type => ({ JsError: this.errors.exist[type] }),
+  },
+  unknown: function() {
+    return { JsError: this.errors.unknown }
+  },
+  uploadStatic: function(type) {
+    return { JsError: this.errors.upload[type] }
+  },
+  fileStatic: function(type) {
+    return { JsError: this.errors.files[type] }
+  },
+  request: function(type) {
+    return { JsError: this.errors.request[type] }
+  },
+  existStatic: function(type) {
+    return { JsError: this.errors.exist[type] }
+  },
   exist: type => ({
     JsError: {
       code: `js-${type}-2`,
@@ -222,6 +236,8 @@ module.exports = {
       }
     }
   }),
-  validate: (type, field) => ({ JsError: this.errors.validate[type][field] }),
+  validate: function(type, field) {
+    return { JsError: this.errors.validate[type][field] }
+  },
   set: error => ({ JsError: error })
 }
