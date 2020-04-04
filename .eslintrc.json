@@ -14,6 +14,10 @@
   },
   "rules": {
     "space-before-function-paren": "off",
-    "no-useless-catch": "off"
+    "no-useless-catch": "off",
+    "no-unused-vars": "warn",
+    "comma-dangle": "warn",
+    "no-trailing-spaces": "warn",
+    "object-curly-spacing": "warn"
   }
 }
