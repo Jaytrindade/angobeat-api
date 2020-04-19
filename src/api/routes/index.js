@@ -2,6 +2,7 @@ const express = require('express')
 const morgan = require('morgan')
 const CORS = require('@configs/cors')
 const auth = require('./authRoute')
+const user = require('./userRoute')
 const { setRouter } = require('@utils')
 const { Message } = require('@messages')
 const RequestFilters = require('@middlewares/request')
@@ -17,8 +18,9 @@ const routes = (app) => {
   app.use(express.urlencoded({ extended: true }))
   app.use(express.json())
 
-  // auth routes
+  // routes
   app.use(setRouter('auth'), auth)
+  app.use(setRouter('user'), user)
 
   // se a rota não existir gera um erro
   app.use((req, res, next) => {

@@ -8,7 +8,7 @@ module.exports = (req, res, next) => {
   const { service } = req.headers
 
   if (jagile.hasValue(service)) {
-    const body = req.body
+    const body = jagile.hasValue(req.body) ? req.body : { default: true }
     const result = jagile.wallFilters({
       service,
       data: body,

@@ -17,6 +17,7 @@ mongoose.connect(
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    useCreateIndex: true,
   },
   (error) => {
     if (error) console.error('MONGODB ERROR: ', error)

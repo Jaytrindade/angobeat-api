@@ -93,11 +93,19 @@ module.exports = {
   // serviços do usuario
   userGetInfo: {
     fields: {
-      userId: { type: 'objectId', required: false },
-      username: { type: 'string', required: false, validate: ['username'] },
-      email: { type: 'string', required: false, validate: ['email'] },
+      userId: { type: 'objectId' },
+      username: { type: 'string', validate: ['username'] },
+      email: { type: 'string', validate: ['email'] },
     },
     config: {
+      minFields: 0,
+    },
+  },
+  // serviços do usuario
+  userUpdateMe: {
+    fields: {},
+    config: {
+      output: {},
       minFields: 0,
     },
   },
