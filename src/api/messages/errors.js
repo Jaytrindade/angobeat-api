@@ -1,11 +1,6 @@
 const fieldsName = require('./fields')
 
-// show to users how to send data
-const examples = {
-  username: 'Ex: [joao, _joao99, joao99_, ...]',
-}
-
-// error message config
+// configuracoes de mensagens de erros
 module.exports = {
   errors: {
     required: {
@@ -141,8 +136,6 @@ module.exports = {
       JsError: {
         code: `js-${type}-1`,
         field: type,
-        hasExample: Object.keys(examples).includes(type),
-        example: examples[type] || '',
         message: `<${fieldsName[type].pt}> inválido.`,
       },
     }

@@ -27,7 +27,7 @@ const routes = (app) => {
     next(error)
   })
 
-  // pega o erro gerado e notifica
+  // pega o erro gerado e retorna
   app.use((error, req, res, next) => Message.send(error, req, res))
 }
 

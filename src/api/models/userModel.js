@@ -63,6 +63,23 @@ UserSchema.query.bySignup = function (data) {
   })
 }
 
+UserSchema.query.byLogin = function (data) {
+  return this.where({
+    $or: [
+      { email: data.user, checkedEmail: true },
+      {
+        phoneNumber: data.user,
+        checkedPhoneNumber: true,
+      },
+      { username: data.user, checkedEmail: true },
+      {
+        username: data.user,
+        checkedPhoneNumber: true,
+      },
+    ],
+  }).select('_id password')
+}
+
 UserSchema.query.byCheckCode = function (code, checked = false) {
   return this.where({ phoneNumberCode: code, checkedPhoneNumber: checked })
 }

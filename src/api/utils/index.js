@@ -1,3 +1,4 @@
+const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 
 const configRoutes = require('@configs/routes')
@@ -21,4 +22,24 @@ module.exports = {
   },
   setHashPassword: (password) =>
     bcrypt.hashSync(password, Number(process.env.PASSWORD_HASH_CODE)),
+  isSamePassowrd: (password, passwordHash) =>
+    bcrypt.compareSync(password, passwordHash),
+  // create cookie or token :<string>
+  setToken: (user) => {
+    const dateInit = new Date()
+    const timestumpInit = dateInit.getTime()
+    const minInit = dateInit.getMinutes()
+    const timestumpEnd = new Date().setHours(
+      process.env.TOKEN_EXPIRES_IN,
+      minInit
+    )
+    user.iat = timestumpInit
+    user.exp = timestumpEnd
+    return jwt.sign(user, process.env.TOKEN_PRIVATE_HASH_KEY, {
+      issuer: process.env.TOKEN_ISSUER,
+      subject: process.env.TOKEN_SUBJECT,
+      audience: process.env.TOKEN_AUDIENCE,
+      algorithm: process.env.TOKEN_ALGORITHM,
+    })
+  },
 }

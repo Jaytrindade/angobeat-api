@@ -1,7 +1,7 @@
 module.exports = {
-  PendingUser: require('./pendingUser'),
-  User: require('./user'),
-  Albun: require('./albun'),
-  Music: require('./music'),
-  Playlist: require('./playlist'),
+  PendingUser: require('./pendingUserModel'),
+  User: require('./userModel'),
+  Albun: require('./albunModel'),
+  Music: require('./musicModel'),
+  Playlist: require('./playlistModel'),
 }

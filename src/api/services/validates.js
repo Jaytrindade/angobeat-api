@@ -43,7 +43,7 @@ const email = (value) => {
 }
 
 // validando password
-const password = (value) => {
+const pass = (value) => {
   const { PASSWORD_MIN_CHAR, PASSWORD_MAX_CHAR } = process.env
   if (
     jagile.checkMinAndMaxValueEachWord(
@@ -76,7 +76,7 @@ const phoneNumber = (value) => {
   } else {
     return {
       ok: false,
-      message: Errors.invalid('phone-number').JsError.message,
+      message: Errors.invalid('phoneNumber').JsError.message,
     }
   }
 }
@@ -114,6 +114,13 @@ const reactionType = (value) => {
   }
 }
 
+const login = ({ user, password }) => {
+  if (email(user).ok || phoneNumber(user).ok || username(user).ok) {
+    if (pass(password).ok) return { ok: true, value: { user, password } }
+    else return { ok: false }
+  } else return { ok: false }
+}
+
 module.exports = ({ type, value }) => {
   switch (type) {
     case 'name':
@@ -123,8 +130,8 @@ module.exports = ({ type, value }) => {
     case 'email':
       return email(value)
     case 'password':
-      return password(value)
-    case 'phone-number':
+      return pass(value)
+    case 'phoneNumber':
       return phoneNumber(value)
     case 'sex':
       return sex(value)
@@ -134,5 +141,7 @@ module.exports = ({ type, value }) => {
       return fileType(value)
     case 'reaction-type':
       return reactionType(value)
+    case 'login':
+      return login(value)
   }
 }
