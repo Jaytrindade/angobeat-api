@@ -3,7 +3,7 @@ const { Errors } = require('@messages')
 const alloweds = require('@configs/alloweds')
 
 // validando o nome
-const name = value => {
+const name = (value) => {
   value = jagile.correctName(value)
   value = jagile.capitalizeText(value, true)
   const min = process.env.NAME_MIN_CHAR
@@ -16,13 +16,13 @@ const name = value => {
   } else {
     return {
       ok: false,
-      message: Errors.validate('limit-char', 'name').JsError.message.pt
+      message: Errors.validate('limit-char', 'name').JsError.message,
     }
   }
 }
 
 // validando username
-const username = value => {
+const username = (value) => {
   value = value.trim()
   const { USERNAME_MAX_CHAR, USERNAME_MIN_CHAR } = process.env
   if (
@@ -32,18 +32,18 @@ const username = value => {
   ) {
     return { ok: true, value }
   } else {
-    return { ok: false, message: Errors.invalid('username').JsError.message.pt }
+    return { ok: false, message: Errors.invalid('username').JsError.message }
   }
 }
 
 // validando email
-const email = value => {
+const email = (value) => {
   if (jagile.isEmail(value)) return { ok: true, value }
-  else return { ok: false, message: Errors.invalid('email').JsError.message.pt }
+  else return { ok: false, message: Errors.invalid('email').JsError.message }
 }
 
 // validando password
-const password = value => {
+const password = (value) => {
   const { PASSWORD_MIN_CHAR, PASSWORD_MAX_CHAR } = process.env
   if (
     jagile.checkMinAndMaxValueEachWord(
@@ -56,60 +56,60 @@ const password = value => {
   } else {
     return {
       ok: false,
-      message: Errors.validate('limit-char', 'password').JsError.message.pt
+      message: Errors.validate('limit-char', 'password').JsError.message,
     }
   }
 }
 
 // validando o sexo
-const sex = value => {
+const sex = (value) => {
   value = value.trim()
   const allowedSex = process.env.SEX_ALLOWED.split(',')
   if (jagile.inArray(allowedSex, value)) return { ok: true, value }
-  else return { ok: false, message: Errors.invalid('sex').JsError.message.pt }
+  else return { ok: false, message: Errors.invalid('sex').JsError.message }
 }
 
 // validando numero de telefone
-const phoneNumber = value => {
+const phoneNumber = (value) => {
   if (jagile.isPhoneNumber(value) || jagile.isPhoneNumber('+' + value)) {
     return { ok: true, value }
   } else {
     return {
       ok: false,
-      message: Errors.invalid('phone-number').JsError.message.pt
+      message: Errors.invalid('phone-number').JsError.message,
     }
   }
 }
 
 // validando a categoria do arquivo
-const fileCategory = value => {
+const fileCategory = (value) => {
   value = value.toLowerCase()
   if (alloweds.file.category.includes(value)) {
     return { ok: true, value }
   } else {
     return {
       ok: false,
-      message: Errors.fileStatic('category').JsError.message.pt
+      message: Errors.fileStatic('category').JsError.message,
     }
   }
 }
 
 // validando o tipo do arquivo
-const fileType = value => {
+const fileType = (value) => {
   if (jagile.inArray(alloweds.file.type, value)) {
     return { ok: true, value }
   } else {
-    return { ok: false, message: Errors.fileStatic('type').JsError.message.pt }
+    return { ok: false, message: Errors.fileStatic('type').JsError.message }
   }
 }
 
 // validando o tipo de reação
-const reactionType = value => {
+const reactionType = (value) => {
   if (alloweds.reactions.includes(value)) return { ok: true, value }
   else {
     return {
       ok: false,
-      message: Errors.invalidStatic('reaction-type').JsError.message.pt
+      message: Errors.invalidStatic('reaction-type').JsError.message,
     }
   }
 }

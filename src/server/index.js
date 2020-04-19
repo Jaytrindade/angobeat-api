@@ -6,7 +6,7 @@ const {
   SERVER_NAME,
   APP_RUN,
   DB_NAME,
-  LOCAL_DB_URI
+  LOCAL_DB_URI,
 } = process.env
 
 const dbUri = APP_RUN === 'dev' ? LOCAL_DB_URI : LOCAL_DB_URI
@@ -16,9 +16,9 @@ mongoose.connect(
   dbUri,
   {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
   },
-  error => {
+  (error) => {
     if (error) console.error('MONGODB ERROR: ', error)
     else {
       server.listen(PORT, HOSTNAME, () => {

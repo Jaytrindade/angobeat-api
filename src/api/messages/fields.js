@@ -2,12 +2,12 @@ module.exports = {
   'image-profile-pic': { pt: 'Imagem de perfil', en: 'Profile image' },
   'image-profile-big': {
     pt: 'Imagem de capa',
-    en: 'Profile background image'
+    en: 'Profile background image',
   },
   'image-post': { pt: 'Imagem de post', en: 'Post image' },
   'image-others': {
     pt: 'Imagem de [comentários/mensagens]',
-    en: 'Image for [comment/message]'
+    en: 'Image for [comment/message]',
   },
   image: { pt: 'Imagem', en: 'Image' },
   video: { pt: 'Vídeo', en: 'Video' },
@@ -19,6 +19,8 @@ module.exports = {
   password: { pt: 'Senha', en: 'Password' },
   confirmPassword: { pt: 'Confirmar senha', en: 'Confirm password' },
   number: { pt: 'Número', en: 'Number' },
+  phoneNumber: { pt: 'Número de Telefone', en: 'Phone Number' },
+  code: { pt: 'Código', en: 'Code' },
   country: { pt: 'País', en: 'Country' },
   state: { pt: 'Estado', en: 'State' },
   city: { pt: 'Cidade', en: 'City' },
@@ -35,6 +37,6 @@ module.exports = {
   post: { pt: 'Post', en: 'Post' },
   workAreaCategory: {
     pt: 'Categoria da area de trabalho',
-    en: 'Work area category'
-  }
+    en: 'Work area category',
+  },
 }

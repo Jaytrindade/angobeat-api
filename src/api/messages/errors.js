@@ -2,7 +2,7 @@ const fieldsName = require('./fields')
 
 // show to users how to send data
 const examples = {
-  username: 'Ex: [joao, _joao99, joao99_, ...]'
+  username: 'Ex: [joao, _joao99, joao99_, ...]',
 }
 
 // error message config
@@ -11,233 +11,166 @@ module.exports = {
     required: {
       'all-fields': {
         code: 'js-required-1',
-        message: {
-          pt: 'Todos os campos são obrigatorios.',
-          en: 'All fields is required.'
-        }
+        message: 'Todos os campos são obrigatorios.',
       },
-      field: field => {
+      field: (field) => {
         const fields = fieldsName[field]
         return {
           code: 'js-required-2',
-          message: {
-            pt: `O campo <${fields.pt}> é obrigatório.`,
-            en: `The field <${fields.en}> is required.`
-          }
+          message: `O campo <${fields.pt}> é obrigatório.`,
         }
       },
       'all-datas': {
         code: 'js-required-3',
-        message: {
-          pt: 'Os dodos não estão completos.',
-          en: 'The datas is not complete.'
-        }
-      }
+        message: 'Os dodos não estão completos.',
+      },
     },
     notFound: {
       'all-data': {
         code: 'js-not-found-1',
-        message: {
-          pt: 'Dados não encontrados.',
-          en: 'Not found datas.'
-        }
+        message: 'Dados não encontrados.',
       },
-      data: field => {
+      data: (field) => {
         const fields = fieldsName[field]
         return {
           code: 'js-not-found-2',
           message: {
             pt: `${fields.pt}: Dados não encontrado.`,
-            en: `${fields.en}: Not found data.`
-          }
+            en: `${fields.en}: Not found data.`,
+          },
         }
-      }
+      },
     },
     invalid: {
       request: {
         code: 'js-request-1',
-        message: {
-          pt: 'Requisição Inválida.',
-          en: 'Invalid Request.'
-        }
+        message: 'Requisição Inválida.',
       },
       login: {
         code: 'js-login-1',
         field: 'login',
-        message: {
-          pt: 'Usuário inválido.',
-          en: 'Invalid user.'
-        }
+        message: 'Usuário inválido.',
       },
       'reaction-type': {
         code: 'js-reaction-1',
         field: 'react',
-        message: {
-          pt: `<${fieldsName.reaction.pt}> inválida.`,
-          en: `Invalid <${fieldsName.reaction.en}>.`
-        }
+        message: `<${fieldsName.reaction.pt}> inválida.`,
       },
       'correct-data': {
         code: 'js-correct-1',
-        message: {
-          pt: 'Envie dados correctos.',
-          en: 'Send the correct values.'
-        }
+        message: 'Envie dados correctos.',
       },
-      'work-area-category': {
-        code: 'js-work-area-category-1',
-        field: 'workAreaCategory',
-        message: {
-          pt: `<${fieldsName.workAreaCategory.pt}> inválido.`,
-          en: `Invalid <${fieldsName.workAreaCategory.en}>.`
-        }
-      }
+      checkAcount: {
+        code: 'js-check-acount-1',
+        message: 'Link inválido!',
+      },
     },
     exist: {},
     unknown: {
       conde: 'js-unknown-1',
-      message: {
-        pt: 'Oooops! Algo deu errado, tente novamente em um minuto.',
-        en: 'Oooops! Something is wrong, try again in one minute.'
-      }
+      message: 'Oooops! Algo deu errado, tente novamente em um minuto.',
     },
     files: {
       category: {
         code: 'js-files-1',
-        message: {
-          pt: 'Categoria inválida.',
-          en: 'Invalid category.'
-        }
+        message: 'Categoria inválida.',
       },
       type: {
         code: 'js-files-2',
-        message: {
-          pt: 'Tipo de aqruivo inválido.',
-          en: 'Invalid type file.'
-        }
-      }
+        message: 'Tipo de aqruivo inválido.',
+      },
     },
     request: {
       'service-not-allowed': {
         code: 'js-request-2',
-        message: {
-          pt: 'Serviço não registrado.',
-          en: 'Service is not allowed.'
-        }
+        message: 'Serviço não registrado.',
       },
       'unknown-service': {
         code: 'js-request-3',
-        message: {
-          pt: 'Não sei que tipo de serviço queres acessar!',
-          en: "I don't know what kind of service you want to access!"
-        }
+        message: 'Não sei que tipo de serviço queres acessar!',
       },
       'field-formats': {
         code: 'js-request-4',
-        message: {
-          pt: 'Envie os dados de acordo com os seus formatos.',
-          en: 'Send the data according to their formats.'
-        }
+        message: 'Envie os dados de acordo com os seus formatos.',
       },
       session: {
         code: 'js-session-1',
-        message: {
-          pt: 'Usuário não autenticado.',
-          en: 'Unauthenticated user.'
-        }
-      }
+        message: 'Usuário não autenticado.',
+      },
     },
     validate: {
       'limit-char': {
         name: {
           code: 'js-name-3',
           field: 'name',
-          message: {
-            pt: `<${fieldsName.name.pt}> de ${process.env.NAME_MIN_CHAR} à ${process.env.NAME_MAX_CHAR} caracteres.`,
-            en: `<${fieldsName.name.pt}> from ${process.env.NAME_MIN_CHAR} to ${process.env.NAME_MAX_CHAR} characters.`
-          }
+          message: `<${fieldsName.name.pt}> de ${process.env.NAME_MIN_CHAR} à ${process.env.NAME_MAX_CHAR} caracteres.`,
         },
         username: {
           code: 'js-username-3',
           field: 'username',
-          message: {
-            pt: `<${fieldsName.username.pt}> de ${process.env.USERNAME_MIN_CHAR} à ${process.env.USERNAME_MAX_CHAR} caracteres.`,
-            en: `<${fieldsName.username.en}> from ${process.env.USERNAME_MIN_CHAR} to ${process.env.USERNAME_MAX_CHAR} characters.`
-          }
+          message: `<${fieldsName.username.pt}> de ${process.env.USERNAME_MIN_CHAR} à ${process.env.USERNAME_MAX_CHAR} caracteres.`,
         },
         password: {
           code: 'js-password-1',
           field: 'password',
-          message: {
-            pt: `<${fieldsName.password.pt}> de ${process.env.PASSWORD_MIN_CHAR} à ${process.env.PASSWORD_MAX_CHAR} caracteres.`,
-            en: `<${fieldsName.password.en}> from ${process.env.PASSWORD_MIN_CHAR} to ${process.env.PASSWORD_MAX_CHAR} characters.`
-          }
-        }
+          message: `<${fieldsName.password.pt}> de ${process.env.PASSWORD_MIN_CHAR} à ${process.env.PASSWORD_MAX_CHAR} caracteres.`,
+        },
       },
       different: {
         password: {
           code: 'js-password-2',
           field: 'password',
-          message: {
-            pt: `A <${fieldsName.password.pt}> não corresponde.`,
-            en: `The <${fieldsName.password.en}> is different.`
-          }
-        }
-      }
-    }
+          message: `A <${fieldsName.password.pt}> não corresponde.`,
+        },
+      },
+    },
   },
-  required: function(type, field = false) {
+  required: function (type, field = false) {
     if (field) return { JsError: this.errors.required[type](field) }
     else return { JsError: this.errors.required[type] }
   },
-  notFound: function(type, field = false) {
+  notFound: function (type, field = false) {
     if (field) return { JsError: this.errors.notFound[type](field) }
     else return { JsError: this.errors.notFound[type] }
   },
-  invalidStatic: function(type) {
+  invalidStatic: function (type) {
     return { JsError: this.errors.invalid[type] }
   },
-  invalid: function(type) {
+  invalid: function (type) {
     return {
       JsError: {
         code: `js-${type}-1`,
         field: type,
         hasExample: Object.keys(examples).includes(type),
         example: examples[type] || '',
-        message: {
-          pt: `<${fieldsName[type].pt}> inválido.`,
-          en: `Invalid <${fieldsName[type].en}>.`
-        }
-      }
+        message: `<${fieldsName[type].pt}> inválido.`,
+      },
     }
   },
-  unknown: function() {
+  unknown: function () {
     return { JsError: this.errors.unknown }
   },
-  uploadStatic: function(type) {
+  uploadStatic: function (type) {
     return { JsError: this.errors.upload[type] }
   },
-  fileStatic: function(type) {
+  fileStatic: function (type) {
     return { JsError: this.errors.files[type] }
   },
-  request: function(type) {
+  request: function (type) {
     return { JsError: this.errors.request[type] }
   },
-  existStatic: function(type) {
+  existStatic: function (type) {
     return { JsError: this.errors.exist[type] }
   },
-  exist: type => ({
+  exist: (type) => ({
     JsError: {
       code: `js-${type}-2`,
       field: type,
-      message: {
-        pt: `<${fieldsName[type].pt}> já existe.`,
-        en: `The <${fieldsName[type].en}> value already exist.`
-      }
-    }
+      message: `<${fieldsName[type].pt}> já existe.`,
+    },
   }),
-  validate: function(type, field) {
+  validate: function (type, field) {
     return { JsError: this.errors.validate[type][field] }
   },
-  set: error => ({ JsError: error })
+  set: (error) => ({ JsError: error }),
 }

@@ -9,7 +9,8 @@
       "@routes": ["./src/api/routes"],
       "@utils": ["./src/api/utils"],
       "@middlewares": ["./src/api/middlewares"],
-      "@messages": ["src/api/messages"],
+      "@messages": ["./src/api/messages"],
+      "@services": ["./src/api/services"],
       "@server": ["./src/server"],
       "@configs": ["./src/configs"]
     }

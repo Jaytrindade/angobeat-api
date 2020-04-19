@@ -1,6 +1,6 @@
 const Errors = require('./errors')
 const Success = require('./success')
-const { baseUrl, apiCopyright } = require('@configs/routes')
+const { defaultUrl, apiCopyright } = require('@configs/routes')
 
 module.exports = {
   Success,
@@ -14,13 +14,13 @@ module.exports = {
       const message = {
         success: false,
         service: req.headers.service,
-        url: `${baseUrl}${req.originalUrl}`,
+        url: `${defaultUrl}${req.originalUrl}`,
         hasNewToken: hasNewToken,
         token: newToken,
         data: {},
         status: 500,
         date: new Date().toISOString(),
-        copyright: apiCopyright
+        copyright: apiCopyright,
       }
       if (data.JsError) {
         message.data = data.JsError
@@ -36,6 +36,6 @@ module.exports = {
       } else message.data = { message: data.message }
 
       res.status(status).json(message)
-    }
-  }
+    },
+  },
 }

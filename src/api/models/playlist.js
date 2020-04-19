@@ -6,6 +6,7 @@ const PlaylistSchema = Schema(
     _id: { type: Schema.Types.ObjectId, required: true },
     user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
     title: { type: String, required: true },
+    description: { type: String },
     musics: {
       qty: { type: Number, default: 0 },
       from: [
@@ -13,14 +14,13 @@ const PlaylistSchema = Schema(
           music: {
             type: Schema.Types.ObjectId,
             ref: 'Music',
-            required: true
+            required: true,
           },
-          user: { type: Schema.Types.ObjectId, ref: 'User', required: true }
-        }
-      ]
+          user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+        },
+      ],
     },
-    description: { type: String },
-    createdAt: { type: Date, default: Date.now }
+    createdAt: { type: Date, default: Date.now },
   },
   { minimize: true, strict: true }
 )

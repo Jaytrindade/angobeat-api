@@ -16,7 +16,7 @@
     "space-before-function-paren": "off",
     "no-useless-catch": "off",
     "no-unused-vars": "warn",
-    "comma-dangle": "warn",
+    "comma-dangle": "off",
     "no-trailing-spaces": "warn",
     "object-curly-spacing": "warn"
   }

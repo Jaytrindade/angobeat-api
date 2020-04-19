@@ -5,7 +5,7 @@ const MusicSchema = Schema(
   {
     _id: { type: Schema.Types.ObjectId, required: true },
     user_id: { type: Schema.Types.ObjectId, ref: 'User', required: true },
-    albun_id: { type: Schema.Types.ObjectId, ref: 'Albun', required: true },
+    albun_id: { type: Schema.Types.ObjectId, ref: 'Albun' },
     name: { type: String, required: true },
     title: { type: String, required: true },
     url: { type: String },
@@ -21,6 +21,10 @@ const MusicSchema = Schema(
       default: 'global'
     },
     likes: {
+      qty: { type: Number, default: 0 },
+      from: [{ type: Schema.Types.ObjectId, ref: 'User' }]
+    },
+    unlikes: {
       qty: { type: Number, default: 0 },
       from: [{ type: Schema.Types.ObjectId, ref: 'User' }]
     },

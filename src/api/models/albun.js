@@ -5,6 +5,7 @@ const AlbunSchema = Schema(
   {
     _id: { type: Schema.Types.ObjectId, required: true },
     user_id: { type: Schema.Types.ObjectId, required: true },
+    thumbnail: { type: String, required: true },
     title: { type: String, required: true },
     description: { type: String },
     qtyMusics: { type: Number, default: 0 },

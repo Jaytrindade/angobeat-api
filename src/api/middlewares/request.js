@@ -13,7 +13,7 @@ module.exports = (req, res, next) => {
       service,
       data: body,
       rules: Services,
-      validations: Validators
+      validations: Validators,
     })
 
     if (result.ok && result.exec) {

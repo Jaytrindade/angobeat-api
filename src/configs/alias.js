@@ -13,5 +13,5 @@ alias.addAliases({
   '@messages': path.resolve(rootPath, 'src', 'api', 'messages'),
   '@services': path.resolve(rootPath, 'src', 'api', 'services'),
   '@configs': path.resolve(rootPath, 'src', 'configs'),
-  '@server': path.resolve(rootPath, 'src', 'server')
+  '@server': path.resolve(rootPath, 'src', 'server'),
 })
