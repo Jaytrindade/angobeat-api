@@ -1,7 +1,7 @@
 const express = require('express')
 const morgan = require('morgan')
 const CORS = require('@configs/cors')
-const auth = require('./auth')
+const auth = require('./authRoute')
 const { setRouter } = require('@utils')
 const { Message } = require('@messages')
 const RequestFilters = require('@middlewares/request')
