@@ -5,13 +5,15 @@ const { remoteBaseUrl } = require('@configs/routes')
 const { sendEmail } = require('@services/email')
 const { sendSMS } = require('@services/sms')
 const { Message, Success, Errors } = require('@messages')
-const { User, PendingUser } = require('@models')
+const { User, Admin, PendingUser, PendingAdmin } = require('@models')
 const jagile = require('jsoft-agile')
 const funcs = require('@utils')
 
 // check if user already exist
-const existUser = async (data) => {
-  const userData = await User.find()
+const existUser = async (type, data) => {
+  const userModel = type === 'user' ? User : Admin
+  const userData = await userModel
+    .find()
     .findOne()
     .bySignup(data)
     .select('email username phoneNumber checkedPhoneNumber')
@@ -41,10 +43,10 @@ const existUser = async (data) => {
   } else return { ok: false }
 }
 
-module.exports = async (req, res, next) => {
+module.exports = async (type = 'user', req, res, next) => {
   try {
     const { data } = req
-    const checkUser = await existUser(data)
+    const checkUser = await existUser(type, data)
 
     if (!checkUser.ok) {
       data._id = mongoose.Types.ObjectId()
@@ -52,7 +54,8 @@ module.exports = async (req, res, next) => {
       data.searchName = funcs.filterSearch(data.name)
       data.phoneNumberCode = generateVerificationCode(6, { type: 'string' })
 
-      const result = await PendingUser(data).save()
+      const usePendingModel = type === 'user' ? PendingUser : PendingAdmin
+      const result = await usePendingModel(data).save()
 
       const optios = {
         to: data.email,

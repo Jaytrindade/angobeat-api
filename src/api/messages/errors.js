@@ -59,6 +59,10 @@ module.exports = {
         code: 'js-check-acount-1',
         message: 'Link inválido!',
       },
+      code: {
+        code: 'js-code-1',
+        message: 'Código inválido!',
+      },
     },
     exist: {},
     unknown: {

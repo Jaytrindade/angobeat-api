@@ -64,4 +64,4 @@ AdminSchema.plugin(timeZone, {
   paths: ['lastUpdate', 'createdAt', 'born'],
 })
 
-module.exports = model('adminUser', AdminSchema)
+module.exports = model('admin', AdminSchema)

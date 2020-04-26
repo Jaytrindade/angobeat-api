@@ -1,15 +1,17 @@
 const mongoose = require('mongoose')
 
 const { Message, Success, Errors } = require('@messages')
-const { User, PendingUser } = require('@models')
+const { User, PendingUser, Admin, PendingAdmin } = require('@models')
 const jagile = require('jsoft-agile')
 
-module.exports = async (req, res, next) => {
+module.exports = async (type = 'user', req, res, next) => {
   try {
     const { code } = req.data
+    const useUserModel = type === 'user' ? User : Admin
+    const usePendingModel = type === 'user' ? PendingUser : PendingAdmin
 
     if (jagile.hasValue(code) && mongoose.isValidObjectId(code)) {
-      const updateUser = await User.findOneAndUpdate(
+      const updateUser = await useUserModel.findOneAndUpdate(
         { _id: code, checkedEmail: false },
         { $set: { checkedEmail: true, lastUpdate: new Date() } }
       )
@@ -17,17 +19,19 @@ module.exports = async (req, res, next) => {
       if (jagile.hasValue(updateUser)) {
         Message.send(Success({ exec: true }), req, res)
       } else {
-        const oldUser = await PendingUser.findOneAndDelete({
-          _id: code,
-        }).exec()
+        const oldUser = await usePendingModel
+          .findOneAndDelete({
+            _id: code,
+          })
+          .exec()
 
         if (jagile.hasValue(oldUser)) {
-          await PendingUser.deleteMany({
+          await usePendingModel.deleteMany({
             $or: [{ email: oldUser.email }, { username: oldUser.username }],
           })
 
           const setNew = { ...oldUser }
-          await User({ ...setNew._doc, checkedEmail: true }).save()
+          await useUserModel({ ...setNew._doc, checkedEmail: true }).save()
 
           Message.send(Success({ exec: true }), req, res)
         } else {

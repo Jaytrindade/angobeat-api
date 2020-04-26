@@ -22,7 +22,7 @@ module.exports = {
   },
   setHashPassword: (password) =>
     bcrypt.hashSync(password, Number(process.env.PASSWORD_HASH_CODE)),
-  isSamePassowrd: (password, passwordHash) =>
+  isSamePassoword: (password, passwordHash) =>
     bcrypt.compareSync(password, passwordHash),
   // create cookie or token :<string>
   setToken: (user) => {

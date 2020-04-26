@@ -5,7 +5,6 @@ const auth = require('./authRoute')
 const user = require('./userRoute')
 const { setRouter } = require('@utils')
 const { Message } = require('@messages')
-const RequestFilters = require('@middlewares/request')
 
 const routes = (app) => {
   // mostrar o status das routas

@@ -92,4 +92,10 @@ module.exports = {
       )
     } else Message.send(Errors.request('session'), req, res)
   },
+  adminAccess: (req, res, next) => {
+    const access = req.headers['admin-access']
+    if (jagile.hasValue(access) && access === process.env.ADMIN_ACCESS_HASH) {
+      next()
+    } else Message.send(Errors.set({ message: 'Acesso negado!' }), req, res)
+  },
 }

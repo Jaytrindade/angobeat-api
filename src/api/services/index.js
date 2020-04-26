@@ -26,7 +26,7 @@ module.exports = {
       phoneNumber: {
         type: 'string',
         required: true,
-        validate: 'phone-number',
+        validate: 'phoneNumber',
       },
       email: { type: 'string', required: true, validate: 'email' },
       password: { type: 'string', required: true, validate: 'password' },
